@@ -58,8 +58,8 @@ const notify = async (contents) => {
 }
 
 const main = async () => {
-  await glados()
-  // await notify(await glados())
+  // await glados()
+  await notify(await glados())
 }
 
 main()
