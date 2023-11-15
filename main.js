@@ -1,12 +1,12 @@
 const glados = async () => {
-  const cookie = process.env.GLADOS
+  let cookie = process.env.GLADOS
+
   if (!cookie) return
   try {
 
-        const Cookie = cookie
     
             const headers = {
-                Cookie,
+                Cookie: cookie,
                 'Content-Type': 'application/json;charset=UTF-8',
                 'Origin': 'https://tingwu.aliyun.com',
                 'Referer': 'https://tingwu.aliyun.com/',
@@ -28,7 +28,7 @@ const glados = async () => {
             })
             return  [
               'Checkin OK',
-              `${response.data.data}`,
+              `${response.data}`,
             ]
            
 
@@ -58,7 +58,8 @@ const notify = async (contents) => {
 }
 
 const main = async () => {
-  await notify(await glados())
+  await glados()
+  // await notify(await glados())
 }
 
 main()
