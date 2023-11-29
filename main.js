@@ -35,7 +35,7 @@ const glados = async () => {
            const fetchRes = response
            const json = await fetchRes.json()
                console.log('json',json)
-            const str = `签到日期 ${json.currentDate} `
+            const str = `${json.message} 签到日期 ${json.data.gainDate}`
             return  [
               '听悟签到OK',
               `${str}`,
