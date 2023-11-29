@@ -5,30 +5,36 @@ const glados = async () => {
   try {
 
     
-            const headers = {
-                Cookie: cookie,
-                'Content-Type': 'application/json;charset=UTF-8',
-                'Origin': 'https://tingwu.aliyun.com',
-                'Referer': 'https://tingwu.aliyun.com/',
-                'Sec-Fetch-Mode': 'cors',
-                'Sec-Fetch-Site': 'same-site',
-                'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Redmi K30 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36'
-            };
-    
-          const reqData = {
-            "equityCode": "every_day",
-            "equityType": "daily_sign_in"
-          }
-            const url = 'https://tingwu.aliyun.com/api/subscription/equity/gainEquity';
-            // fetch
-            const response = await fetch(url, {
-                method: 'POST',
-                headers,
-                body: JSON.stringify(reqData)
-            })
+          const response = await fetch("https://tingwu.aliyun.com/api/subscription/equity/gainEquity", {
+  "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+    "bx-v": "2.5.5",
+    "cache-control": "no-cache",
+    "content-type": "application/json",
+    "pragma": "no-cache",
+    "sec-ch-ua": "\"Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-b3-sampled": "1",
+    "x-b3-spanid": "b8dccbb6000e4a03",
+    "x-b3-traceid": "4cc5f97b45c4b2f465c5311f5a532f53",
+    "x-tw-canary": "",
+    cookie,
+    "Referer": "https://tingwu.aliyun.com/equity/receive?pageType=3",
+    "Referrer-Policy": "unsafe-url"
+  },
+  "body": "{\"equityType\":\"daily_sign_in\",\"equityCode\":\"every_day\"}",
+  "method": "POST"
+});
+
             console.log('response',response)
-           const fetchRes =await response
+           const fetchRes = response
            const json = await fetchRes.json()
+               console.log('json',json)
             const str = `签到日期 ${json.currentDate} `
             return  [
               '听悟签到OK',
