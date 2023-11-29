@@ -26,9 +26,13 @@ const glados = async () => {
                 headers,
                 body: JSON.stringify(reqData)
             })
+            console.log('response',response)
+           const fetchRes =await response
+           const json = await fetchRes.json()
+            const str = `签到日期 ${json.currentDate} `
             return  [
-              'Checkin OK',
-              `${response}`,
+              '听悟签到OK',
+              `${str}`,
             ]
            
 
@@ -51,7 +55,7 @@ const notify = async (contents) => {
     body: JSON.stringify({
       token,
       title: contents[0],
-      content: contents.join('<br>'),
+      content: contents[1],
       template: 'markdown',
     }),
   })
